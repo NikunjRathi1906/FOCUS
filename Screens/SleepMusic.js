@@ -11,19 +11,36 @@ import { Audio } from "expo-av";
 
 const sound = new Audio.Sound();
 
-export default class Sleep extends React.Component {
+export default class Gaming extends React.Component {
   constructor() {
     super();
   }
-  playSound = async () => {
+
+  loadSound = async () => {
     await sound.loadAsync(require("../Tunes/Sleep.mp3"));
-    await sound.replayAsync();
   };
 
-  stopSound = async () => {
-    await sound.stopAsync();
+  unloadSound = async () => {
     await sound.unloadAsync();
   };
+
+  componentDidMount() {
+    this.loadSound();
+    sound.setIsLoopingAsync(true);
+    Audio.setAudioModeAsync({ staysActiveInBackground: true });
+  }
+
+  playSound = async () => {
+    await sound.playAsync();
+  };
+
+  pauseSound = async () => {
+    await sound.pauseAsync();
+  };
+
+  componentWillUnmount() {
+    this.unloadSound();
+  }
 
   render() {
     return (
@@ -48,10 +65,11 @@ export default class Sleep extends React.Component {
               width: "75%",
               backgroundColor: "rgba(0, 0, 0, 0.5)",
               borderRadius: 25,
-              padding: 25,
+              justifyContent: "center",
+              alignItems: "center",
             }}
           >
-            <View style={{}}>
+            <View>
               <Text
                 style={{
                   color: "white",
@@ -60,11 +78,17 @@ export default class Sleep extends React.Component {
                   fontSize: 30,
                 }}
               >
-                FOCUS
+                FOKUS
               </Text>
 
               <Icon name="headphones" type="font-awesome" color="white" />
-              <Text style={{ color: "white", margin: "12.5%" }}>
+              <Text
+                style={{
+                  color: "white",
+                  marginTop: "12.5%",
+                  alignSelf: "center",
+                }}
+              >
                 Use headphones for best experience.
               </Text>
             </View>
@@ -72,19 +96,26 @@ export default class Sleep extends React.Component {
               style={{
                 marginTop: "25%",
                 flexDirection: "row",
-                justifyContent: "space-around",
               }}
             >
               <TouchableOpacity
                 onPress={() => {
                   this.playSound();
                 }}
+                style={{
+                  padding: "2.5%",
+                  marginRight: "6.125%",
+                }}
               >
                 <Icon name="play" type="font-awesome" color="white" />
               </TouchableOpacity>
               <TouchableOpacity
                 onPress={() => {
-                  this.stopSound();
+                  this.pauseSound();
+                }}
+                style={{
+                  padding: "2.5%",
+                  marginLeft: "6.125%",
                 }}
               >
                 <Icon name="pause" type="font-awesome" color="white" />

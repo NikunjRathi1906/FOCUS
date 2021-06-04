@@ -21,7 +21,7 @@ export default function App() {
     <AppearanceProvider>
       <NavigationContainer theme={scheme === "dark" ? DarkTheme : DefaultTheme}>
         <Stack.Navigator>
-          <Stack.Screen name="FOCUS" component={HomeScreen} />
+          <Stack.Screen name="FOKUS" component={HomeScreen} />
           <Stack.Screen name="Study" component={Study} />
           <Stack.Screen name="Relax" component={Relax} />
           <Stack.Screen name="Yoga & Meditation" component={Yoga} />

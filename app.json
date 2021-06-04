@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "FOCUS",
-    "slug": "focus",
+    "name": "FOKUS",
+    "slug": "fokus",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -16,15 +16,18 @@
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.NikunjRathi.FOCUS",
-      "buildNumber": "1.0.0"
+      "bundleIdentifier": "com.WatermelonInc.FOKUS",
+      "buildNumber": "1.0.0",
+      "infoPlist": {
+        "UIBackgroundModes": ["audio"]
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/icon.png",
         "backgroundColor": "#0f0c2b"
       },
-      "package": "com.NikunjRathi.FOCUS",
+      "package": "com.NikunjRathi.FOKUS",
       "versionCode": 1
     },
     "web": {
